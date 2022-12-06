@@ -1,6 +1,6 @@
 import CustomButton from './CustomButton';
 
-function User(props){
+function Todo(props){
     return <div className="square-style">
     {props.user.age}살 - {props.user.name}
     <CustomButton color="red" onClick={()=>{
@@ -9,4 +9,4 @@ function User(props){
     </div>
 }
 
-export default User
+export default Todo

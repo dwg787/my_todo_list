@@ -1,59 +1,63 @@
-// src/App.js
-
 import React, { useState } from "react";
 import "./App.css";
-import CustomButton from "./components/CustomButton"
-import User from "./components/User"
+import CustomButton from "./components/CustomButton";
+import Todo from "./components/Todo";
 
 const App = () => {
-  const [users,setUsers] = useState(
-    [
-      { id: 1, age: 30, name:"송중기"},
-      { id: 2, age: 24, name:"송강"},
-      { id: 3, age: 32, name:"김유정"},
-      { id: 4, age: 29, name:"구교환"},
-    ]);
-    const [name,setName] = useState("")
-    const [age,setAge] = useState("")
+  const [todo, setTodos] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-    const addUserHandler=()=>{
-      const newUser={
-        id:users.length+1,
-        age:age,
-        name:name
-      }
-      setUsers([...users,newUser])
-    }
-    const deleteUserHandler=((id)=>{
-      const newUserList = users.filter((user)=>user.id!==id);
-      setUsers(newUserList)
-    })
+  const addTodoHandler = () => {
+    const newTodo = {
+      id: todo.length + 1,
+      title: title,
+      content: content,
+    };
+    setTodos([...todo, newTodo]);
+  };
+  const deleteTodoHandler = (id) => {
+    const newTodoList = todo.filter((todo) => todo.id !== id);
+    setTodos(newTodoList);
+  };
   return (
     <div>
-      <div className="app-style">
-      {users.map((user)=>{
-        if(user.age<25){
-          return <User handleDelete={deleteUserHandler} user={user} key={user.id}></User>
-        }else{
-          return null
-        }
-        
-      })}
+      <div className="header-design">
+        <div>My Todo List</div>
+        <div>React</div>
       </div>
-      
-      <input
-        value={name}
-        placeholder="이름을 입력해주세요"
-        onChange={(e)=>setName(e.target.value)}
-      />
-      <input
-        value={age}
-        placeholder="나이를 입력해주세요"
-        onChange={(e)=>setAge(e.target.value)}
-      />
-      <CustomButton color="green" onClick={addUserHandler}>추가하기</CustomButton>
+      <form action="">
+        <label for="title-input">제목</label>
+        <input
+          id="title-input"
+          value={title}
+          placeholder="제목을 입력해주세요"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label for="content-input">내용</label>
+        <input
+          id="content-input"
+          value={content}
+          placeholder="내용을 입력해주세요"
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </form>
+      <CustomButton color="green" onClick={addTodoHandler}>
+        추가하기
+      </CustomButton>
+      <div className="app-style">
+        {todo.map((todo) => {
+          return (
+            <Todo
+              handleDelete={deleteTodoHandler}
+              todo={todo}
+              key={todo.id}
+            ></Todo>
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default App;
