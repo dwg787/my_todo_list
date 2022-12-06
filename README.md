@@ -6,7 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+<<<<<<< HEAD
 ### `npm start`
+=======
+### `yarn start`
+>>>>>>> 9d90e37e0fc5ca68bf107c5db2e470a6c433a7e9
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,12 +18,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+<<<<<<< HEAD
 ### `npm test`
+=======
+### `yarn test`
+>>>>>>> 9d90e37e0fc5ca68bf107c5db2e470a6c433a7e9
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+<<<<<<< HEAD
 ### `npm run build`
+=======
+### `yarn build`
+>>>>>>> 9d90e37e0fc5ca68bf107c5db2e470a6c433a7e9
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,7 +41,11 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+<<<<<<< HEAD
 ### `npm run eject`
+=======
+### `yarn eject`
+>>>>>>> 9d90e37e0fc5ca68bf107c5db2e470a6c433a7e9
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
@@ -65,6 +81,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+<<<<<<< HEAD
 ### `npm run build` fails to minify
+=======
+### `yarn build` fails to minify
+>>>>>>> 9d90e37e0fc5ca68bf107c5db2e470a6c433a7e9
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
