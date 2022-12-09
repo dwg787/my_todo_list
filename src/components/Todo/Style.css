@@ -1,0 +1,6 @@
+.square-style {
+  border: 3px solid rgb(107, 139, 236);
+  width: 200px;
+  border-radius: 12px;
+  padding: 24px 24px;
+}

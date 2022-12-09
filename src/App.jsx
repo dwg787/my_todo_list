@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 import CustomButton from './components/CustomButton';
-import TodoList from './components/TodoList';
-import Header from './components/Header';
-import Layout from './components/Layout';
+import TodoList from './components/TodoList/TodoList';
+import Header from './components/Header/Header';
+import Layout from './components/Layout/Layout';
+import CreateNewTodo from './components/InputSection/InputSection';
 
 const App = () => {
   const [todo, setTodos] = useState([]);
@@ -29,7 +30,7 @@ const App = () => {
 
   const onChangeHandler = (id) => {
     const updateTodo = todo.map((todo) =>
-      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
+      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
     );
     setTodos(updateTodo);
   };
@@ -39,30 +40,15 @@ const App = () => {
 
   return (
     <Layout>
-      {/* <Header/> */}
-      <div className="input-section">
-        <div>
-          <label htmlFor="title-input">제목</label>
-          <input
-            id="title-input"
-            value={title}
-            placeholder="제목을 입력해주세요"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="content-input">내용</label>
-          <input
-            id="content-input"
-            value={content}
-            placeholder="내용을 입력해주세요"
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
-        <CustomButton color="green" onClick={addTodoHandler}>
-          추가하기
-        </CustomButton>
-      </div>
+      <Header />
+      <CreateNewTodo
+        setTitle={setTitle}
+        setContent={setContent}
+        onChangeHandler={onChangeHandler}
+      />
+      <CustomButton color='green' onClick={addTodoHandler}>
+        추가하기
+      </CustomButton>
       <TodoList
         todoWorking={todoWorking}
         todoDone={todoDone}
@@ -71,11 +57,6 @@ const App = () => {
       ></TodoList>
     </Layout>
   );
-
-  // if(isDone){
-  // }else{
-  //   <div className="todo-done">Done</div>
-  // }
 };
 
 export default App;

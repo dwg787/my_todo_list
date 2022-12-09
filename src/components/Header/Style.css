@@ -1,0 +1,8 @@
+.header-design {
+  align-items: center;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 20px;
+}

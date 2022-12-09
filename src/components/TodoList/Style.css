@@ -1,0 +1,10 @@
+.todo-container {
+  padding: 0 24px;
+}
+
+.todo-working,
+.todo-done {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

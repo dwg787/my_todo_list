@@ -1,10 +1,10 @@
-import Todo from './Todo';
+import Todo from '../Todo/Todo';
 
 function RenderTodoList(props) {
   return (
-    <div className="todo-container">
-      <div className="todo-working">
-        Working
+    <div className='todo-container'>
+      <h2>Working</h2>
+      <div className='todo-working'>
         {props.todoWorking.map((todo) => {
           return (
             <Todo
@@ -17,8 +17,8 @@ function RenderTodoList(props) {
           );
         })}
       </div>
-      <div className="todo-done">
-        Done
+      <h2>Done</h2>
+      <div className='todo-done'>
         {props.todoDone.map((todo) => {
           return (
             <Todo
