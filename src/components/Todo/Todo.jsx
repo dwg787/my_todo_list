@@ -5,6 +5,9 @@ function Todo(props) {
   console.log('todo 컴포넌트 실행', props.todo.title);
   return (
     <div className='square-style'>
+      <a href={props.todo.id}>
+        <div>상세보기</div>
+      </a>
       <div className='card-title'>{props.todo.title}</div>
       <p>{props.todo.content}</p>
       <CustomButton

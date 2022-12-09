@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import Home from '../pages/Home';
-import Works from '../pages/Works';
-import Work from '../pages/Work';
+import ViewTodoDetail from './pages/TodoDetail';
+import Home from './pages/Home';
 
 const Router = () => {
   return (
@@ -11,8 +10,7 @@ const Router = () => {
       <Layout>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='works' element={<Works />} />
-          <Route path='works/:id' element={<Work />} />
+          <Route path='/:id' element={<ViewTodoDetail />} />
         </Routes>
       </Layout>
     </BrowserRouter>

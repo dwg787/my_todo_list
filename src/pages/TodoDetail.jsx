@@ -1,7 +1,7 @@
 // src/pages/Work.js
-
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const data = [
   { id: 1, todo: '리액트 배우기' },
@@ -12,12 +12,24 @@ const data = [
   { id: 6, todo: 'HTTP 프로토콜 배우기' },
 ];
 
-function Work() {
+function ViewTodoDetail() {
+  const navigate = useNavigate();
   const param = useParams();
 
   const work = data.find((work) => work.id === parseInt(param.id));
 
-  return <div>{work.todo}</div>;
+  return (
+    <>
+      <div>{work.todo}</div>
+      <button
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        Home으로 이동
+      </button>
+    </>
+  );
 }
 
-export default Work;
+export default ViewTodoDetail;

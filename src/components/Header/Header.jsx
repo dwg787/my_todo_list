@@ -4,11 +4,11 @@ function Header() {
   return (
     <>
       <div className='header-styles'>
-        <span>Sparta Coding Club - Let's learn React</span>
+        <span>My Todo List</span>
       </div>
       <div className='header-design'>
-        <div>My Todo List</div>
-        <div>React</div>
+        <div>***님 환영합니다!</div>
+        <div>Sign out</div>
       </div>
     </>
   );
