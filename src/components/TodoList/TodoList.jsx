@@ -8,9 +8,9 @@ function RenderTodoList() {
   return (
     <div className='todo-container'>
       {/* <h2>{todoState.todo.isDone === true ? 'Done' : 'Working'}</h2> */}
-      <div className='todo-working'>
+      <div>
         <h2>Working</h2>
-        <div>
+        <div className='todo-working'>
           {todoState.todo
             .filter((todo) => todo.isDone === false)
             .map((todo) => {
@@ -19,9 +19,9 @@ function RenderTodoList() {
             })}
         </div>
       </div>
-      <div className='todo-done'>
+      <div>
         <h2>Done</h2>
-        <div>
+        <div className='todo-done'>
           {todoState.todo
             .filter((todo) => todo.isDone === true)
             .map((todo) => {
