@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './style.css';
+import './Style.css';
 // import { viewTodo } from '../redux/modules/todoManager';
 
 function ViewTodoDetail() {

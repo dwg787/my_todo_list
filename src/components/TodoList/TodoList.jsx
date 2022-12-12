@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from '../Todo/Todo';
 import { useSelector } from 'react-redux';
-import './style.css';
+import './Style.css';
 
 function RenderTodoList() {
   const todoState = useSelector((state) => state.todoManager);

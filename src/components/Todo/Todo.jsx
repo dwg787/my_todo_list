@@ -1,7 +1,7 @@
 // import CustomButton from '../CustomButton';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './style.css';
+import './Style.css';
 import { toggleStatusTodo, deleteTodo } from '../../redux/modules/todoManager';
 
 function Todo(props) {
