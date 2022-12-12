@@ -1,8 +1,12 @@
 // src/redux/modules/counter.js
+
+import { act } from 'react-dom/test-utils';
+
 // Action Value
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 const TOGGLE_STATUS_TODO = 'TOGGLE_STATUS_TODO';
+const UPDATE_TODO = 'UPDATE_TODO';
 const VIEW_TODO_DETAIL = 'VIEW_TODO_DETAIL';
 
 // Action Creator
@@ -23,6 +27,14 @@ export const deleteTodo = (payload) => {
 export const toggleStatusTodo = (payload) => {
   return {
     type: TOGGLE_STATUS_TODO,
+    payload,
+  };
+};
+
+export const updateTodo = (payload) => {
+  // console.log('updateTodo 페이로드:', payload);
+  return {
+    type: UPDATE_TODO,
     payload,
   };
 };
@@ -62,12 +74,29 @@ const todoManager = (state = initialState, action) => {
       };
     }
     case TOGGLE_STATUS_TODO: {
-      const updateTodo = state.todo.map((todo) =>
+      const toggleTodo = state.todo.map((todo) =>
         todo.id === action.payload ? { ...todo, isDone: !todo.isDone } : todo
       );
       return {
         ...state,
-        todo: updateTodo,
+        todo: toggleTodo,
+      };
+    }
+
+    case UPDATE_TODO: {
+      // console.log('update_todo 안에 들어온 payload', action.payload);
+      const updateTitleNContent = state.todo.map((todo) =>
+        todo.id === action.payload.id
+          ? {
+              ...todo,
+              title: action.payload.title,
+              content: action.payload.content,
+            }
+          : todo
+      );
+      return {
+        ...state,
+        todo: updateTitleNContent,
       };
     }
 

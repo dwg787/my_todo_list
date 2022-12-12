@@ -12,7 +12,7 @@ function ViewTodoDetail() {
   const viewDetail = todoState.todo.find((todo) => todo.id === param.id);
   const navigate = useNavigate();
 
-  console.log('viewDetail값: ', viewDetail);
+  // console.log('viewDetail값: ', viewDetail);
   return (
     <div className='todo-detail'>
       <div className='detail-container'>
