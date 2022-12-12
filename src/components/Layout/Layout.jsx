@@ -1,4 +1,4 @@
-import './Style.css';
+import './style.css';
 
 function Layout(props) {
   // console.log("Layout 컴포넌트 들어옴: ", props.children)

@@ -2,33 +2,34 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
-const data = [
-  { id: 1, todo: '리액트 배우기' },
-  { id: 2, todo: '노드 배우기' },
-  { id: 3, todo: '자바스크립트 배우기' },
-  { id: 4, todo: '파이어 베이스 배우기' },
-  { id: 5, todo: '넥스트 배우기' },
-  { id: 6, todo: 'HTTP 프로토콜 배우기' },
-];
+import { useSelector } from 'react-redux';
+import './style.css';
+// import { viewTodo } from '../redux/modules/todoManager';
 
 function ViewTodoDetail() {
-  const navigate = useNavigate();
   const param = useParams();
+  const todoState = useSelector((state) => state.todoManager);
+  const viewDetail = todoState.todo.find((todo) => todo.id === param.id);
+  const navigate = useNavigate();
 
-  const work = data.find((work) => work.id === parseInt(param.id));
-
+  console.log('viewDetail값: ', viewDetail);
   return (
-    <>
-      <div>{work.todo}</div>
-      <button
-        onClick={() => {
-          navigate('/');
-        }}
-      >
-        Home으로 이동
-      </button>
-    </>
+    <div className='todo-detail'>
+      <div className='detail-container'>
+        <div className='container-top'>
+          <div>ID: {todoState.todo.indexOf(viewDetail) + 1}</div>
+          <button
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            Home으로 이동
+          </button>
+        </div>
+        <h2>{viewDetail.title}</h2>
+        <p>{viewDetail.content}</p>
+      </div>
+    </div>
   );
 }
 

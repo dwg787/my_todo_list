@@ -1,35 +1,32 @@
+import React from 'react';
 import Todo from '../Todo/Todo';
+import { useSelector } from 'react-redux';
+import './style.css';
 
-function RenderTodoList(props) {
+function RenderTodoList() {
+  const todoState = useSelector((state) => state.todoManager);
   return (
     <div className='todo-container'>
-      <h2>Working</h2>
+      {/* <h2>{todoState.todo.isDone === true ? 'Done' : 'Working'}</h2> */}
       <div className='todo-working'>
-        {props.todoWorking.map((todo) => {
-          return (
-            <Todo
-              onChangeHandler={props.onChangeHandler}
-              deleteTodoHandler={props.deleteTodoHandler}
-              todoDone={props.todoWorking}
-              todo={todo}
-              key={todo.id}
-            />
-          );
-        })}
+        <h2>Working</h2>
+        <div>
+          {todoState.todo
+            .filter((todo) => todo.isDone === false)
+            .map((todo) => {
+              return <Todo todo={todo} key={todo.id} />;
+            })}
+        </div>
       </div>
-      <h2>Done</h2>
       <div className='todo-done'>
-        {props.todoDone.map((todo) => {
-          return (
-            <Todo
-              onChangeHandler={props.onChangeHandler}
-              deleteTodoHandler={props.deleteTodoHandler}
-              todoDone={props.todoDone}
-              todo={todo}
-              key={todo.id}
-            />
-          );
-        })}
+        <h2>Done</h2>
+        <div>
+          {todoState.todo
+            .filter((todo) => todo.isDone === true)
+            .map((todo) => {
+              return <Todo todo={todo} key={todo.id} />;
+            })}
+        </div>
       </div>
     </div>
   );
