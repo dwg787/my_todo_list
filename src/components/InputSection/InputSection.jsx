@@ -25,7 +25,11 @@ function CreateNewTodo() {
       content: content,
       isDone: false,
     };
-    dispatch(addTodo(newTodo));
+    if (newTodo.title.length !== 0 && newTodo.content.length !== 0) {
+      dispatch(addTodo(newTodo));
+    } else {
+      alert('글제목과 내용을 입력하세요!');
+    }
     setTitle('');
     setContent('');
   };

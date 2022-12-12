@@ -17,7 +17,6 @@ function ViewTodoDetail() {
     <div className='todo-detail'>
       <div className='detail-container'>
         <div className='container-top'>
-          <div>ID: {todoState.todo.indexOf(viewDetail) + 1}</div>
           <button
             onClick={() => {
               navigate('/');
