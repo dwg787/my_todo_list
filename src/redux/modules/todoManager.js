@@ -1,13 +1,11 @@
 // src/redux/modules/counter.js
-
-import { act } from 'react-dom/test-utils';
-
 // Action Value
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 const TOGGLE_STATUS_TODO = 'TOGGLE_STATUS_TODO';
 const UPDATE_TODO = 'UPDATE_TODO';
 const VIEW_TODO_DETAIL = 'VIEW_TODO_DETAIL';
+// const SHOW_MODAL = "SHOW_MODAL"
 
 // Action Creator
 export const addTodo = (newTodo) => {
@@ -45,6 +43,13 @@ export const viewTodo = (payload) => {
     payload,
   };
 };
+
+// export const showModal = (payload) => {
+//   return {
+//     type: SHOW_MODAL,
+//     payload,
+//   };
+// }
 
 // Initial State
 const initialState = {
@@ -84,7 +89,6 @@ const todoManager = (state = initialState, action) => {
     }
 
     case UPDATE_TODO: {
-      // console.log('update_todo 안에 들어온 payload', action.payload);
       const updateTitleNContent = state.todo.map((todo) =>
         todo.id === action.payload.id
           ? {
@@ -108,6 +112,12 @@ const todoManager = (state = initialState, action) => {
         todo: viewTodoDetail,
       };
     }
+
+    // case SHOW_MODAL:{
+    //   return {
+
+    //   };
+    // }
 
     default:
       return state;

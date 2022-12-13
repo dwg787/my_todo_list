@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../redux/modules/todoManager';
+import ModalBasic from '../Modal/ModalBasic';
 
 function CreateNewTodo() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -28,7 +30,8 @@ function CreateNewTodo() {
     if (newTodo.title.length !== 0 && newTodo.content.length !== 0) {
       dispatch(addTodo(newTodo));
     } else {
-      alert('글제목과 내용을 입력하세요!');
+      // alert('글제목과 내용을 입력하세요!');
+      setModalOpen(!modalOpen);
     }
     setTitle('');
     setContent('');
@@ -52,6 +55,13 @@ function CreateNewTodo() {
           onChange={handleContentChange}
         />
         <button>추가하기</button>
+        {modalOpen ? (
+          <div className='modal-background'>
+            <ModalBasic setModalOpen={setModalOpen} />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </form>
   );
