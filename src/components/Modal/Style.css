@@ -30,16 +30,24 @@
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
-  align-items: center;
+  /* align-items:center; */
   justify-content: center;
+}
 
-  /* 배경 클릭 비활성화 */
-  /* pointer-events: none; */
+.modal-container > p {
+  margin: 60px;
 }
 
 /* 모달창 내부 X버튼 */
 .modal-close {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  cursor: pointer;
+  width: 70px;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  /* right: 10px; */
+  /* top: 10px; */
+  top: 50%;
 }

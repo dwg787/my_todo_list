@@ -1,6 +1,47 @@
 .square-style {
-  border: 3px solid rgb(107, 139, 236);
+  border: 3px solid rgb(78, 34, 97);
   width: 200px;
   border-radius: 12px;
   padding: 24px 24px;
+}
+
+.square-style > span {
+  border: 1px solid rgb(78, 34, 97);
+}
+
+.square-style > form {
+  margin-top: 10px;
+}
+
+.card-title {
+  margin-top: 10px;
+}
+
+.button-layout {
+  margin: 20px;
+  /* flex-wrap: wrap; */
+}
+
+.button-layout > button {
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.button-layout > button:first-child {
+  border: 2px solid rgb(78, 34, 97);
+}
+
+.button-layout > button:nth-child(2),
+:nth-child(3),
+button:last-child {
+  /* margin: 10px; */
+}
+
+.button-layout > button:last-child {
+  border: none;
+  color: white;
+  background-color: rgb(178, 3, 3);
 }

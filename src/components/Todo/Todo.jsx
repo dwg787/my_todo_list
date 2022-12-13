@@ -1,6 +1,6 @@
 // import CustomButton from '../CustomButton';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Style.css';
 import {
@@ -8,13 +8,15 @@ import {
   updateTodo,
   toggleStatusTodo,
 } from '../../redux/modules/todoManager';
+import EditModalBasic from '../Modal/EditModalBasic';
+import CustomButton from '../CustomButton';
 
 function Todo(props) {
   const dispatch = useDispatch();
-  const todoState = useSelector((state) => state.todoManager);
   const [appendElement, setAppendElement] = useState(false);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState(props.todo.title);
+  const [content, setContent] = useState(props.todo.content);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -33,8 +35,12 @@ function Todo(props) {
     event.preventDefault();
     props.todo.title = title;
     props.todo.content = content;
-    dispatch(updateTodo(props.todo));
-    setAppendElement(!appendElement);
+    if (title.length !== 0 && content.length !== 0) {
+      setAppendElement(!appendElement);
+      dispatch(updateTodo(props.todo));
+    } else {
+      setEditModalOpen(true);
+    }
   };
 
   const toggleTodoHandler = (event) => {
@@ -50,7 +56,7 @@ function Todo(props) {
         </Link>
       </div>
       {appendElement ? (
-        <form onSubmit={updateTodoHandler}>
+        <form id='editInput' onSubmit={updateTodoHandler}>
           <input
             id='title-input2'
             value={title}
@@ -63,37 +69,45 @@ function Todo(props) {
             placeholder='내용을 입력해주세요'
             onChange={changeContent}
           />
-          <button>수정완료</button>
+          <button form='editInput' onClick={updateTodoHandler}>
+            수정완료
+          </button>
+          {editModalOpen ? (
+            <div className='modal-background'>
+              <EditModalBasic setEditModalOpen={setEditModalOpen} />
+            </div>
+          ) : (
+            <></>
+          )}
         </form>
       ) : (
-        <>
+        <div>
           <div className='card-title'>{props.todo.title}</div>
           <p>{props.todo.content}</p>
-        </>
+        </div>
       )}
 
       <div className='button-layout'>
-        <button onClick={deleteTodoHandler}>삭제</button>
         <button
           onClick={() => {
-            setAppendElement(!appendElement);
+            if (title && content) {
+              setAppendElement(!appendElement);
+            } else {
+              setEditModalOpen(true);
+            }
           }}
         >
-          수정
+          {appendElement ? '수정취소' : '수정'}
         </button>
-        <button onClick={toggleTodoHandler}>
-          {props.todo.isDone ? '취소' : '완료'}
-        </button>
+        {appendElement ? (
+          <></>
+        ) : (
+          <CustomButton onClick={toggleTodoHandler}>
+            {props.todo.isDone ? '취소' : '완료'}
+          </CustomButton>
+        )}
+        <button onClick={deleteTodoHandler}>삭제</button>
       </div>
-      {/* <CustomButton
-        color='red'
-        onClick={dispatch(deleteTodo(todoState.todo.id))}
-      >
-        삭제하기
-      </CustomButton> */}
-      {/* <CustomButton onClick={dispatch(changeTodo(todoState.todo.id))}>
-        {todoState.todo.isDone ? '취소' : '완료'}
-      </CustomButton> */}
     </div>
   );
 }

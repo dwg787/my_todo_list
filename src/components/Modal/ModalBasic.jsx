@@ -9,10 +9,10 @@ function ModalBasic({ setModalOpen }) {
 
   return (
     <div className='modal-container'>
-      <button className='modal-close' onClick={closeModal}>
-        X
-      </button>
       <p>제목과 내용을 입력하세요!</p>
+      <button className='modal-close' onClick={closeModal}>
+        확 인
+      </button>
     </div>
   );
   // 모달 끄기 (X버튼 onClick 이벤트 핸들러)
