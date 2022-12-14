@@ -32,12 +32,21 @@
 
 .button-layout > button:first-child {
   border: 2px solid rgb(78, 34, 97);
+  cursor: pointer;
+}
+
+.button-layout > button:first-child:hover {
+  border: 2px solid rgb(78, 34, 97);
+  background-color: rgb(78, 34, 97);
+  color: #fff;
 }
 
 .button-layout > button:nth-child(2),
 :nth-child(3),
-button:last-child {
+:last-child {
+  cursor: pointer;
   /* margin: 10px; */
+  /* 왜 여기 margin값 주면 화면 전체 레이아웃이 다 바뀌지?ㅠㅠ */
 }
 
 .button-layout > button:last-child {
