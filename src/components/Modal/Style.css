@@ -30,7 +30,7 @@
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
-  /* align-items:center; */
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -50,4 +50,23 @@
   /* right: 10px; */
   /* top: 10px; */
   top: 50%;
+}
+
+.button-wrapper {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.modal-close1,
+.modal-close2 {
+  margin: 10px;
+  width: 70px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
 }

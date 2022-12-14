@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Style.css';
 import {
-  deleteTodo,
+  // deleteTodo,
   updateTodo,
   toggleStatusTodo,
 } from '../../redux/modules/todoManager';
 import EditModalBasic from '../Modal/EditModalBasic';
 import CustomButton from '../CustomButton';
+import AskDeleteModal from '../Modal/AskDeleteModal';
 
 function Todo(props) {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Todo(props) {
   const [title, setTitle] = useState(props.todo.title);
   const [content, setContent] = useState(props.todo.content);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const [delModalOpen, setDelModalOpen] = useState(false);
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -26,10 +28,10 @@ function Todo(props) {
     setContent(event.target.value);
   };
 
-  const deleteTodoHandler = (event) => {
-    event.preventDefault();
-    dispatch(deleteTodo(props.todo.id));
-  };
+  // const deleteTodoHandler = (event) => {
+  //   event.preventDefault();
+  //   dispatch(deleteTodo(props.todo.id));
+  // };
 
   const updateTodoHandler = (event) => {
     event.preventDefault();
@@ -55,6 +57,8 @@ function Todo(props) {
           <span style={{ cursor: 'pointer' }}>상세보기</span>
         </Link>
       </div>
+
+      {/* 수정 구현부 */}
       {appendElement ? (
         <form id='editInput' onSubmit={updateTodoHandler}>
           <input
@@ -72,12 +76,10 @@ function Todo(props) {
           <button form='editInput' onClick={updateTodoHandler}>
             수정완료
           </button>
-          {editModalOpen ? (
+          {editModalOpen && (
             <div className='modal-background'>
               <EditModalBasic setEditModalOpen={setEditModalOpen} />
             </div>
-          ) : (
-            <></>
           )}
         </form>
       ) : (
@@ -99,14 +101,31 @@ function Todo(props) {
         >
           {appendElement ? '수정취소' : '수정'}
         </button>
-        {appendElement ? (
-          <></>
-        ) : (
+
+        {/* 진행 상태 변경부 */}
+        {!appendElement && (
           <CustomButton onClick={toggleTodoHandler}>
             {props.todo.isDone ? '취소' : '완료'}
           </CustomButton>
         )}
-        <button onClick={deleteTodoHandler}>삭제</button>
+
+        {/* 삭제 구현부 */}
+        {/* <button onClick={deleteTodoHandler}>삭제</button> */}
+        <button
+          onClick={() => {
+            setDelModalOpen(!delModalOpen);
+          }}
+        >
+          삭제
+        </button>
+        {delModalOpen && (
+          <div className='modal-background'>
+            <AskDeleteModal
+              setDelModalOpen={setDelModalOpen}
+              targetId={props.todo.id}
+            ></AskDeleteModal>
+          </div>
+        )}
       </div>
     </div>
   );
