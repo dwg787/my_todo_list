@@ -9,7 +9,7 @@ import {
   toggleStatusTodo,
 } from '../../redux/modules/todoManager';
 import EditModalBasic from '../Modal/EditModalBasic';
-import CustomButton from '../CustomButton';
+import CustomButton from '../Buttons/CustomButton';
 import AskDeleteModal from '../Modal/AskDeleteModal';
 
 function Todo(props) {
